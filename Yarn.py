@@ -1,6 +1,6 @@
 class Yarn:
     #maybe add an attribute for gauge/how many oz in one sc and chain stitch
-    def _init_(self, hex:str, name:str, weight:int, gauge:float):
+    def __init__(self, hex:str, name:str, weight:int, gauge:float):
         self.hex:str = hex
         self.name:str = name
         self.weight:int = weight
