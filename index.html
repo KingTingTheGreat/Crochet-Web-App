@@ -9,8 +9,19 @@
 
 <body>
     <div id="page-wrapper">
+        <h1>Image Processor</h1>
+        <form id="image-form" enctype="multipart/form-data">
+            <input type="file" id="image-input" name="image" accept="image/*" required>
+            <button type="submit">Upload</button>
+        </form>
 
+        <hr>
+
+        <h2>Result</h2>
+        <img id="processed-image" style="display: none;">
+        <!-- <canvas id="processed-image-canvas"></canvas> -->
     </div>
+    <script src="static/js/main.js"></script>
 </body>
 
 </html>
