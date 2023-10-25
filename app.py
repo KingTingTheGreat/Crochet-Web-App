@@ -4,17 +4,20 @@ from flask_cors import CORS
 from PIL import Image
 import io
 import os
+from ImageToColors import ImageToColors
 
 load_dotenv()
+
+CONVERTER = ImageToColors()
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'heic'}
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})  # to be changed to the actual domain
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
+# @app.route("/")
+# def hello_world():
+    # return "<p>Hello, World!</p>"
 
 @app.route("/trans", methods=['POST'])
 def trans():
@@ -42,4 +45,4 @@ def trans():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8888)
