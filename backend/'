@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Image</title>
+</head>
+<body>
+    <h1>Image from Flask API</h1>
+    <div id="image-container">
+        <!-- Image will be displayed here -->
+    </div>
+
+    <script>
+        // Fetch the image from the Flask API endpoint
+        fetch('http://localhost:3000/test-image')
+            .then(response => {
+                // Check if response is successful
+                if (!response.ok) {
+                    throw new Error('Failed to fetch image');
+                }
+                // Return the image blob
+                return response.blob();
+            })
+            .then(blob => {
+                // Create an object URL from the blob
+                const imgUrl = URL.createObjectURL(blob);
+                // Create an image element
+                const imgElement = document.createElement('img');
+                // Set the image source to the object URL
+                imgElement.src = imgUrl;
+                // Append the image element to the container
+                document.getElementById('image-container').appendChild(imgElement);
+            })
+            .catch(error => {
+                console.error('Error fetching image:', error);
+            });
+    </script>
+</body>
+</html>
+
